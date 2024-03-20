@@ -1,0 +1,11 @@
+name: Show results
+on: issues
+
+jobs:
+    show_result:
+        runs-on: ubuntu-latest
+        steps:
+        - name: get repo code
+          uses: actions/checkout@v3
+        - name: Show workflow execution result
+          run: echo "${{toJson(github.event)}}"
