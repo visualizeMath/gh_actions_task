@@ -1,0 +1,31 @@
+name: first workflow
+on: push
+
+jobs:
+    install_node:
+     runs-on: ubuntu-latest
+
+     steps:
+        - name: Checkout repo
+          uses: actions/checkout@v3
+
+        - name: Set up Node
+          uses: actions/setup-node@v4
+          with:
+            node-version: 18.x.x
+        
+    run_node_commands:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Run ci command
+              run: npm ci
+            - name: Run lint command
+              run: npm lint
+            - name: Run test command
+              run: npm test
+            - name: Run build command
+              run: npm build
+             
+
+
