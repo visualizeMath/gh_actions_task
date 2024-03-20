@@ -12,20 +12,23 @@ jobs:
         - name: Set up Node
           uses: actions/setup-node@v4
           with:
-            node-version: 18.x.x
+            node-version: '18.x'
         
     run_node_commands:
+        needs: install_node
         runs-on: ubuntu-latest
 
         steps:
+            - name: Checkout repo
+              uses: actions/checkout@v3
             - name: Run ci command
               run: npm ci
             - name: Run lint command
-              run: npm lint
+              run: npm run lint
             - name: Run test command
               run: npm test
             - name: Run build command
-              run: npm build
+              run: npm run build
              
 
 
